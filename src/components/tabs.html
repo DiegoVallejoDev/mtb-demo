@@ -1,0 +1,34 @@
+<div x-data="{ activeTab: 'tab1' }" class="tabs-container">
+    <div class="tabs-header">
+        <button @click="activeTab = 'tab1'" :class="{ 'active': activeTab === 'tab1' }" class="tab-btn">Props</button>
+        <button @click="activeTab = 'tab2'" :class="{ 'active': activeTab === 'tab2' }" class="tab-btn">Nesting</button>
+        <button @click="activeTab = 'tab3'" :class="{ 'active': activeTab === 'tab3' }"
+            class="tab-btn">Alpine.js</button>
+    </div>
+
+    <div class="tabs-content">
+        <div x-show="activeTab === 'tab1'" x-transition class="tab-pane">
+            <h4>Component Props</h4>
+            <p>Pass dynamic values to your components like modern frameworks. Use <code
+                    class="code-inline-light">$&#123;propName&#125;</code> syntax to create reusable, flexible
+                components.</p>
+            <pre
+                class="code-block"><code class="language-html">&#123;&#123;button text="Click Me" variant="primary"&#125;&#125;</code></pre>
+        </div>
+
+        <div x-show="activeTab === 'tab2'" x-transition class="tab-pane">
+            <h4>Nested Components</h4>
+            <p>Components can include other components! Build complex UIs from simple building blocks. MTB detects
+                circular dependencies automatically.</p>
+            <pre
+                class="code-block"><code class="language-html">&#123;&#123;header&#125;&#125; includes &#123;&#123;nav&#125;&#125;</code></pre>
+        </div>
+
+        <div x-show="activeTab === 'tab3'" x-transition class="tab-pane">
+            <h4>Alpine.js Integration</h4>
+            <p>Add interactivity with Alpine.js! Use <code class="code-inline-light">x-data</code>, <code
+                    class="code-inline-light">@click</code>, and more for dynamic components.</p>
+            <pre class="code-block"><code class="language-html">&lt;div x-data="{ open: false }"&gt;</code></pre>
+        </div>
+    </div>
+</div>

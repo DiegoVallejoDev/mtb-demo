@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTB.js - Component-Based Static Site Generator</title>
+  <meta name="description"
+    content="MTB.js is a lightweight, component-based static site generator. Build websites using reusable HTML components with props, just like modern frameworks.">
+  <meta name="keywords" content="static site generator, html components, alpinejs, mtb.js, web development">
+  <meta property="og:title" content="MTB.js - Component-Based Static Site Generator">
+  <meta property="og:description" content="Build static sites with reusable components. Simple, fast, and powerful.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- Prism.js Theme -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  {{header}}
+
+  {{hero title="Build Static Sites with Components" subtitle="MTB.js brings component-based architecture to static site
+  generation. Simple, fast, and powerful." cta_text="Explore Demos" cta_link="#interactive"}}
+
+  <section id="features" class="container">
+    <h2 style="margin-top: 3rem">🚀 Key Features</h2>
+    <p class="section-subtitle">Everything you need for modern static site development</p>
+    <div class="grid">
+      {{card icon="🧩" title="Component Props" description="Pass dynamic values to components like modern frameworks.
+      Use the prop syntax for maximum flexibility."}}
+      {{card icon="🔄" title="Nested Components" description="Components can include other components seamlessly. Build
+      complex UIs from simple building blocks."}}
+      {{card icon="⚡" title="Lightning Fast" description="Zero runtime dependencies. Pure static HTML means instant load
+      times and perfect SEO."}}
+      {{card icon="🎨" title="Full Control" description="Style with pure CSS or any framework. No opinions, just
+      flexibility."}}
+      {{card icon="👀" title="Watch Mode" description="Auto-rebuild on file changes. Lightning-fast development workflow
+      with instant feedback."}}
+      {{card icon="🛡️" title="Type Safe" description="Full TypeScript definitions included. Catch errors before they
+      happen."}}
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="examples" class="container section-card bg-gradient-surface">
+    <h2>💫 Interactive Demos</h2>
+    <p class="section-subtitle">Try these live examples powered by Alpine.js + MTB.js</p>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+      <!-- Counter Demo -->
+      <div class="demo-container">
+        <h3>Counter Component</h3>
+        <p class="text-muted mb-6">Simple state management with Alpine.js</p>
+        {{counter title="Product Quantity"}}
+        <pre class="code-block"><code class="language-html">&lt;div x-data="{ count: 0 }"&gt;
+  &lt;button @click="count++"&gt;+&lt;/button&gt;
+  &lt;span x-text="count"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        <p class="text-muted mt-4" style="font-size: 0.95rem;">Uses <span class="inline-code">x-data</span> and <span
+            class="inline-code">@click</span></p>
+      </div>
+
+      <!-- Modal Demo -->
+      <div class="demo-container">
+        <h3>Modal Dialog</h3>
+        <p class="text-muted mb-6">Click to see smooth transitions</p>
+        {{modal triggerText="Open Modal" triggerVariant="primary" title="Welcome!" content="This modal demonstrates
+        Alpine.js transitions and click-away handling built into MTB components." actionText="Got it!"}}
+        <pre class="code-block"><code class="language-html">&lt;div x-data="{ open: false }"&gt;
+  &lt;button @click="open = true"&gt;Open&lt;/button&gt;
+  &lt;div x-show="open"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p class="text-muted mt-4" style="font-size: 0.95rem;">Features: backdrop, ESC key, click-away, transitions</p>
+      </div>
+
+      <!-- Dropdown Demo -->
+      <div class="demo-container">
+        <h3>Dropdown Menu</h3>
+        <p class="text-muted mb-6">Interactive dropdown with click-away detection</p>
+        <div class="flex-center gap-4 flex-wrap" style="height: 100px; align-items: flex-start;">
+          {{dropdown label="Products" variant="primary" menuItems="<a href='/web' class='dropdown-item'>Web
+            Development</a><a href='/mobile' class='dropdown-item'>Mobile Apps</a><a href='/design'
+            class='dropdown-item'>UI/UX Design</a>"}}
+        </div>
+        <pre class="code-block"><code class="language-html">&lt;div x-data="{ open: false }"&gt;
+  &lt;button @click="open = !open"&gt;Menu&lt;/button&gt;
+  &lt;div x-show="open" @click.away="open = false"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p class="text-muted mt-4" style="font-size: 0.95rem;">Features: floating menu, click-outside close</p>
+      </div>
+
+      <!-- Button Variants Demo -->
+      <div class="demo-container">
+        <h3>Button Variants</h3>
+        <p class="text-muted mb-6">Reusable button component with different styles</p>
+        <div class="flex-center gap-4 flex-wrap">
+          {{button text="Primary" class="btn-primary" type="button"}}
+          {{button text="Secondary" class="btn-secondary" type="button"}}
+        </div>
+        <pre class="code-block"><code class="language-html">{{button text="Click Me" class="btn-primary"}}</code></pre>
+        <p class="text-muted mt-4" style="font-size: 0.95rem;">Features: dynamic classes, type support</p>
+      </div>
+
+      <!-- Tabs Demo -->
+      <div class="demo-container" style="grid-column: span 2;">
+        <h3>Tabs Component</h3>
+        <p class="text-muted mb-6">Switch content with active state styling</p>
+        {{tabs}}
+        <p class="text-muted mt-4" style="font-size: 0.95rem;">Features: dynamic classes, content switching</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="container">
+    <h2>📖 Accordion FAQ</h2>
+    <p class="section-subtitle">Expandable content with smooth animations</p>
+    <div class="max-w-md mx-auto" style="max-width: 800px;">
+      {{accordion-item title="What is mtb.js?" content="MTB.js is a lightweight, component-based static site generator.
+      It lets you build websites using reusable HTML components with props, just like modern frameworks, but outputs
+      pure static HTML." defaultOpen="true"}}
+      {{accordion-item title="How do component props work?" content="Props let you pass dynamic values to components
+      using the prop syntax. For example: you can pass text and variant props to a button. This makes components
+      reusable and flexible across your entire site." defaultOpen="false"}}
+      {{accordion-item title="Can I use JavaScript frameworks?" content="Absolutely! MTB.js works seamlessly with
+      Alpine.js, HTMX, Vue, React, or any JavaScript library. Build static HTML and enhance with interactivity as
+      needed." defaultOpen="false"}}
+      {{accordion-item title="Is it production ready?" content="Yes! MTB.js is stable, well-tested, and used in
+      production. It includes TypeScript definitions, comprehensive error handling, and security features like path
+      validation." defaultOpen="false"}}
+      {{accordion-item title="How does nesting work?" content="Components can include other components seamlessly. For
+      example, your header component can include navigation links directly. MTB automatically detects circular
+      dependencies and supports up to 10 nesting levels." defaultOpen="false"}}
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="container">
+    <h2>💻 Code Examples</h2>
+    <p class="section-subtitle">See how easy it is to create components</p>
+
+    <div class="two-col">
+      <div>
+        <h3>1. Basic Component</h3>
+        <p class="text-muted mb-4">Create reusable button with props</p>
+        <pre class="code-block"><code class="language-html">&lt;!-- button.html --&gt;
+&lt;button class="btn-$&#123;variant&#125;"&gt;
+  $&#123;text&#125;
+&lt;/button&gt;
+
+&lt;!-- Usage --&gt;
+&#123;&#123;button text="Click" variant="primary"&#125;&#125;</code></pre>
+        <ul class="feature-list">
+          <li>✓ Dynamic props with ${} syntax</li>
+          <li>✓ Reusable across pages</li>
+          <li>✓ Type-safe with TypeScript</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>2. Nested Components</h3>
+        <p class="text-muted mb-4">Components include other components</p>
+        <pre class="code-block"><code class="language-html">&lt;!-- page.html --&gt;
+&lt;header&gt;
+  &lt;h1&gt;My Site&lt;/h1&gt;
+  &#123;&#123;nav&#125;&#125;
+&lt;/header&gt;
+
+&lt;!-- Automatically includes nav.html --&gt;</code></pre>
+        <ul class="feature-list">
+          <li>✓ Seamless composition</li>
+          <li>✓ Circular dependency detection</li>
+          <li>✓ Max 10 nesting levels</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>3. Alpine.js Integration</h3>
+        <p class="text-muted mb-4">Add interactivity with Alpine</p>
+        <pre class="code-block"><code class="language-html">&lt;div x-data="{ open: false }"&gt;
+  &lt;button @click="open = true"&gt;Open&lt;/button&gt;
+  &lt;div x-show="open"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <ul class="feature-list">
+          <li>✓ Works with any JS library</li>
+          <li>✓ No build step required</li>
+          <li>✓ Progressive enhancement</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>4. Watch Mode</h3>
+        <p class="text-muted mb-4">Auto-rebuild on changes</p>
+        <pre class="code-block"><code class="language-bash"># Start development
+mtb --watch
+
+# Build for production
+mtb
+
+# Initialize new project
+mtb init</code></pre>
+        <ul class="feature-list">
+          <li>✓ Instant feedback</li>
+          <li>✓ Hot reload ready</li>
+          <li>✓ Fast parallel builds</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="container cta-section">
+    <h2 class="text-white mb-4" style="font-size: 3rem;">🎯 Why Choose MTB?</h2>
+    <p class="section-subtitle text-white mb-8" style="color: rgba(255,255,255,0.9);">
+      Simple like a static site generator, powerful like a modern framework. Zero runtime dependencies, maximum
+      flexibility.
+    </p>
+
+    <div class="flex-center gap-4 flex-wrap mb-8">
+      <span class="cta-badge">0 Dependencies</span>
+      <span class="cta-badge">10 Max Nesting</span>
+      <span class="cta-badge">100% Type Safe</span>
+      <span class="cta-badge">∞ Possibilities</span>
+    </div>
+
+    <div class="glass-box">
+      <h3 class="text-white mb-6" style="font-size: 1.8rem;">Quick Start</h3>
+      <div class="code-snippet mb-6">
+        <code class="text-white" style="font-size: 1.1rem;">npm install -g mtb</code>
+      </div>
+      <div class="text-left max-w-md mx-auto">
+        <p class="text-white mb-2"><strong>Initialize:</strong> <code class="code-inline-dark">mtb init</code></p>
+        <p class="text-white mb-2"><strong>Build:</strong> <code class="code-inline-dark">mtb</code></p>
+        <p class="text-white mb-2"><strong>Watch:</strong> <code class="code-inline-dark">mtb --watch</code></p>
+      </div>
+    </div>
+  </section>
+
+  {{footer}}
+  <!-- Prism.js Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+
+</html>

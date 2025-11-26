@@ -1,0 +1,44 @@
+<div x-data="{ open: false }" class="modal-wrapper">
+  <button @click="open = true" class="btn btn-primary">
+    ${triggerText}
+  </button>
+  
+  <div x-show="open" 
+       x-transition:enter="transition ease-out duration-300" 
+       x-transition:enter-start="opacity-0" 
+       x-transition:enter-end="opacity-100" 
+       x-transition:leave="transition ease-in duration-200" 
+       x-transition:leave-start="opacity-100" 
+       x-transition:leave-end="opacity-0" 
+       class="modal-backdrop"
+       @click="open = false">
+  </div>
+  
+  <div x-show="open" 
+       x-transition:enter="transition ease-out duration-300" 
+       x-transition:enter-start="opacity-0 transform scale-95" 
+       x-transition:enter-end="opacity-100 transform scale-100" 
+       x-transition:leave="transition ease-in duration-200" 
+       x-transition:leave-start="opacity-100 transform scale-100" 
+       x-transition:leave-end="opacity-0 transform scale-95" 
+       @click.away="open = false" 
+       @keydown.escape.window="open = false" 
+       class="modal-content"
+       role="dialog" 
+       aria-modal="true">
+    
+    <div class="modal-header">
+      <h3>${title}</h3>
+      <button @click="open = false" class="modal-close" aria-label="Close">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <p>${content}</p>
+    </div>
+    
+    <div class="modal-footer">
+      <button @click="open = false" class="btn btn-secondary">Cancel</button>
+      <button @click="open = false" class="btn btn-primary">${actionText}</button>
+    </div>
+  </div>
+</div>

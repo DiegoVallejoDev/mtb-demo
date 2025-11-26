@@ -1,0 +1,22 @@
+{
+  "name": "mtb-test",
+  "version": "1.0.0",
+  "description": "A demo website showcasing the capabilities of MTB.js, a component-based static site generator.",
+  "homepage": "https://github.com/DiegoVallejoDev/mtb-demo#readme",
+  "bugs": {
+    "url": "https://github.com/DiegoVallejoDev/mtb-demo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoVallejoDev/mtb-demo.git"
+  },
+  "license": "ISC",
+  "author": "Diego Vallejo",
+  "type": "commonjs",
+  "main": "src/pages/index.html",
+  "scripts": {
+    "build": "mtb",
+    "watch": "mtb -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

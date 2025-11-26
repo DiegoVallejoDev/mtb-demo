@@ -1,0 +1,18 @@
+<div x-data="{ open: ${defaultOpen} }"
+    style="border: 2px solid #e5e7eb; border-radius: 12px; margin-bottom: 12px; overflow: hidden; background: white;">
+    <button @click="open = !open" :aria-expanded="open"
+        style="width: 100%; padding: 20px; background: white; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: #333; text-align: left; transition: background 0.2s;">
+        <span>${title}</span>
+        <svg :class="{ 'rotate-180': open }" style="width: 24px; height: 24px; transition: transform 0.3s;" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+    <div x-show="open" x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 transform -translate-y-2"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" style="padding: 0 20px 20px 20px; color: #666; line-height: 1.7;">
+        <p style="margin: 0;">${content}</p>
+    </div>
+</div>
