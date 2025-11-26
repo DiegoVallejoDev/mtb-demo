@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "src/pages/index.html",
   "scripts": {
-    "build": "mtb",
-    "watch": "mtb -w",
+    "build": "node node_modules/mtb/bin/mtb",
+    "watch": "node node_modules/mtb/bin/mtb -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
